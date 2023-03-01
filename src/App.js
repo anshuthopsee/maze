@@ -123,7 +123,7 @@ function App() {
         </div>
         <table style={{width: gridSize*35}}>
           <tbody>
-            {drawMaze(5, 5)}
+            {drawMaze()}
           </tbody>
         </table>
         {showControls()}
