@@ -2,7 +2,7 @@
 
 A simple Maze Game built using React.
 
-- Maze size (rows x columns) ranges from 5-40 when played on PC and 5-13 when played on mobile phone.
+- Maze size corresponds to no. of rows and columns and it ranges from 5-40 when played on PC and 5-13 when played on mobile phone.
 
 ## Reference
 
