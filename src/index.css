@@ -23,8 +23,8 @@ code {
 }
 
 .input_container {
-  height: 120px;
-  padding-top: 30px;
+  height: 130px;
+  padding-top: 20px;
   padding-bottom: 10px;
   display: flex;
   flex-direction: column;
@@ -45,7 +45,7 @@ input {
 button {
   height: 30px;
   width: 120px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 table {
@@ -129,10 +129,43 @@ th, td {
   border-right: 3px solid black;
 }
 
+.controls_container{
+  display: flex;
+  position: absolute;
+  top: 79%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  flex-direction: column;
+  height: 200px;
+  width: 260px;
+  row-gap: 15px;
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 80px;
+  font-size: 20px;
+  border: 1px solid dimgray;
+  cursor: pointer;
+  user-select: none;
+}
+
+.left-right {
+  display: flex;
+  width: 260px;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .banner {
-  margin-top: 30px;
   height: 100px;
   font-size: 30px;
+  margin-top: 5px;
   color: green;
   cursor: pointer;
   background-color: bisque;
