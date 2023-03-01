@@ -9,4 +9,4 @@ Maze generation algorith reference
 Project reference
 - https://github.com/tomliangg/maze-game
 
-Site link - https://anshuthopsee.github.io/maze-game
+Try it out here - https://anshuthopsee.github.io/maze-game
