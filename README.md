@@ -2,7 +2,7 @@
 
 ## Reference
 
-Maze generation algorith reference
+Maze generation algorithm reference
 - https://youtu.be/nHjqkLV_Tp0
 - [randomized depth-first search](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Randomized_depth-first_search)
 
