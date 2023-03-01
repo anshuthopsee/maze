@@ -58,7 +58,7 @@ function App() {
 
   const showBanner = () => {
     if (currentPos[0] === gridSize-1 && currentPos[1] === gridSize-1) {
-      return <div style={{height: isMobile ? 50 : 100, fontSize: isMobile ? 20: 30}} className="banner" onClick={restartGame}>YOU WON! CLICK HERE TO PLAY AGAIN</div>
+      return <div style={{height: isMobile ? 50 : 100, fontSize: isMobile ? 20 : 30}} className="banner" onClick={restartGame}>YOU WON! CLICK HERE TO PLAY AGAIN</div>
     };
   };
 
