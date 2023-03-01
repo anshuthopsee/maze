@@ -1,6 +1,6 @@
 # Maze Game
 
-A simple Maze Game built using React
+A simple Maze Game built using React.
 
 ## Reference
 
