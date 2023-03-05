@@ -5,7 +5,7 @@ function App() {
   const [gridSize, setGridSize] = useState(10);
   const [inputValue, setInputValue] = useState(gridSize);
   const [grid, setGrid] = useState(null);
-  const gridRef = useRef(grid)
+  const gridRef = useRef(grid);
   const [currentPos, setCurrentPos] = useState([0, 0]);
   const currentPosRef = useRef(currentPos);
   const [clickCount, setClickCount] = useState(0);
