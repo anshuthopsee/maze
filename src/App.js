@@ -23,7 +23,7 @@ function App() {
 
     if (currentCell.path && !currentCell.playerVisited && checked) className[1]+='path';
     if (r===currentPos[0] && c===currentPos[1]) {
-      currentCell.playerVisited = true;;
+      currentCell.playerVisited = true;
       className[1]='player-position';
     };
     if (isFinished(r, c)) className[1]+=' finish';
