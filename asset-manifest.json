@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/maze-game/static/css/main.1af747f9.css",
+    "main.css": "/maze-game/static/css/main.157a1601.css",
     "main.js": "/maze-game/static/js/main.568736cf.js",
     "index.html": "/maze-game/index.html",
-    "main.1af747f9.css.map": "/maze-game/static/css/main.1af747f9.css.map",
+    "main.157a1601.css.map": "/maze-game/static/css/main.157a1601.css.map",
     "main.568736cf.js.map": "/maze-game/static/js/main.568736cf.js.map"
   },
   "entrypoints": [
-    "static/css/main.1af747f9.css",
+    "static/css/main.157a1601.css",
     "static/js/main.568736cf.js"
   ]
 }
