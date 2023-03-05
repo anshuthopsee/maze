@@ -1,8 +1,4 @@
-import { Maze } from "./utlis.js";
-import { useState, useEffect, useRef } from "react";
-
-function App() {
-  const [gridSize, setGridSize] = useState(10);
+const [gridSize, setGridSize] = useState(10);
   const [inputValue, setInputValue] = useState(gridSize);
   const [grid, setGrid] = useState(null);
   const gridRef = useRef(grid);
@@ -26,7 +22,7 @@ function App() {
       cell.playerVisited = true;
       className[1]='player-position';
     };
-    if (isFinished(r, c)) className[1]+=' finish';
+    if (isLastCell(r, c)) className[1]+=' finish';
 
     return className;
   };
@@ -44,7 +40,7 @@ function App() {
     };
   };
 
-  const isFinished = (row, column) => {
+  const isLastCell = (row, column) => {
     return row===gridSize-1 && column===gridSize-1;
   };
 
@@ -60,7 +56,7 @@ function App() {
       if (nextCell.playerVisited) {
         currentCell.playerVisited = false;
 
-      } else if (!nextCell.path && !isFinished(nextPosRow, nextPosCol)) {
+      } else if (!nextCell.path && !isLastCell(nextPosRow, nextPosCol)) {
         currentCell.playerVisited = false;
         currentCell.path = true;
       };
@@ -70,7 +66,7 @@ function App() {
   };
 
   const controls = (e) => {
-    if (!isFinished(currentPosRef[0], currentPosRef[1])) {
+    if (!isLastCell(currentPosRef[0], currentPosRef[1])) {
       if (e.key === "ArrowLeft" || e.key === "a") {
         e.preventDefault();
         let nextPos = helper("left");
@@ -102,7 +98,7 @@ function App() {
   };
 
   const showBanner = () => {
-    if (isFinished(currentPos[0], currentPos[1])) {
+    if (isLastCell(currentPos[0], currentPos[1])) {
       return <div style={{height: isMobile ? 50 : 100, fontSize: isMobile ? 20: 30}} className="banner" onClick={restartGame}>YOU WON! CLICK HERE TO PLAY AGAIN</div>
     };
   };
