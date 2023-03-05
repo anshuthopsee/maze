@@ -1,12 +1,11 @@
 let current;
-let solCurrent;
 
 export class Maze {
     constructor(size) {
         this.size = size
         this.grid = [];
         this.stack = [];
-        this.solution = [];
+        this.last = false;
     };
 
     setup() {
@@ -19,22 +18,25 @@ export class Maze {
             this.grid.push(row);
         };
         current = this.grid[0][0];
-        solCurrent = this.grid[0][0];
         return this.grid;
     };
 
     draw() {
         current.visited = true;
-
         let next = current.checkNeighbours();
 
         if (next) {
             next.visited = true;
             this.stack.push(current);
+
+            if (next.row === this.size-1 && next.column === this.size-1) this.last = true;
+            if (!this.last) next.path = true;
+
             current.removeWalls(current, next);
             current = next;
         } else if (this.stack.length > 0){
             let cell = this.stack.pop();
+            if (!this.last) current.path = false;
             current = cell;
         };
 
@@ -82,26 +84,6 @@ export class Maze {
             };
         };
     };
-
-    solveMaze() {
-        // solCurrent.visited = true;
-        // let solNext = solCurrent.checkNeighboursSol(this.grid);
-
-        // if (solNext) {
-        //     solNext.visited = true;
-        //     this.solution.push(solNext);
-        //     solCurrent = solNext;
-        // } else {
-        //     let cell = this.solution.pop();
-        //     solCurrent = cell;
-        // };
-
-        // if (solCurrent.row === this.rows-1 && solCurrent.column === this.rows-1) {
-        //     return this.solution;
-        // };
-
-        // return this.solveMaze();
-    };
 };
 
 class Cell {
@@ -111,20 +93,14 @@ class Cell {
         this.parentGrid = parentGrid;
         this.parentSize = parentSize;
         this.visited = false;
-        this.solVisited = false;
+        this.playerVisited = false;
+        this.path = false;
         this.walls = {
             topWall: true,
             bottomWall: true,
             leftWall: true,
             rightWall: true
         };
-    };
-
-    checkNeighboursSol(maze) {
-        if (!this.walls.bottomWall) return maze[this.row+1][this.column];
-        if (!this.walls.topWall) return maze[this.row-1][this.column];
-        if (!this.walls.leftWall) return maze[this.row][this.column-1];
-        if (!this.walls.rightWall) return maze[this.row][this.column+1];
     };
 
     checkNeighbours() {
