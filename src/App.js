@@ -1,4 +1,8 @@
-const [gridSize, setGridSize] = useState(10);
+import { Maze } from "./utlis.js";
+import { useState, useEffect, useRef } from "react";
+
+function App() {
+  const [gridSize, setGridSize] = useState(10);
   const [inputValue, setInputValue] = useState(gridSize);
   const [grid, setGrid] = useState(null);
   const gridRef = useRef(grid);
