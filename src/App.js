@@ -15,15 +15,15 @@ function App() {
 
   const generateClassName = (walls, r, c) => {
     let className = ["", ""];
-    let currentCell = gridRef.current[r][c];
+    let cell = gridRef.current[r][c];
 
     Object.keys(walls).map((wall) => {
       if (walls[wall]) className[0]+=(` border-${wall}`);
     });
 
-    if (currentCell.path && !currentCell.playerVisited && checked) className[1]+='path';
+    if (cell.path && !cell.playerVisited && checked) className[1]+='path';
     if (r===currentPos[0] && c===currentPos[1]) {
-      currentCell.playerVisited = true;
+      cell.playerVisited = true;
       className[1]='player-position';
     };
     if (isFinished(r, c)) className[1]+=' finish';
