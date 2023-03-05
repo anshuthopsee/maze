@@ -70,7 +70,7 @@ function App() {
   };
 
   const controls = (e) => {
-    if (!isLastCell(currentPosRef[0], currentPosRef[1])) {
+    if (!isLastCell(currentPosRef.current[0], currentPosRef.current[1])) {
       if (e.key === "ArrowLeft" || e.key === "a") {
         e.preventDefault();
         let nextPos = helper("left");
