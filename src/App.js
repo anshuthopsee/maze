@@ -103,7 +103,7 @@ function App() {
 
   const showBanner = () => {
     if (isLastCell(currentPos[0], currentPos[1])) {
-      return <div style={{height: isMobile ? 50 : 100, fontSize: isMobile ? 20: 30}} className="banner" onClick={restartGame}>YOU WON! CLICK HERE TO PLAY AGAIN</div>
+      return <div style={{height: isMobile ? 40 : 100, fontSize: isMobile ? 20: 30}} className="banner" onClick={restartGame}>YOU WON! CLICK HERE TO PLAY AGAIN</div>
     };
   };
 
@@ -134,7 +134,7 @@ function App() {
     setCurrentPos([0, 0]); 
     currentPosRef.current = [0, 0];
     setGridSize(inputValue); 
-    setClickCount(clickCount+1)
+    setClickCount(clickCount+1);
   };
 
   const checkMazeSize = (e) => {
@@ -164,15 +164,15 @@ function App() {
 
   return (
     <>
-        <div className="container">
-          <div className="input_container">
-            <p>{isMobile ? "Use on-screen controls to play" : "Use WASD keys or Arrow keys to play"}</p>
-            <div className="checkbox">
-              <p>Cheat Mode</p>
-              <input type={"checkbox"} checked={checked} onChange={() => setChecked(!checked)}/>
-            </div>
-            <p>{`Maze Size (5-${maxLimit()})`}</p>
-            <input className="maze_size" type="number" min={5} max={maxLimit()} name="maze-size" value={inputValue} 
+      <div className="container">
+        <div className="input_container">
+          <p>{isMobile ? "Use on-screen controls to play" : "Use WASD keys or Arrow keys to play"}</p>
+          <div className="checkbox">
+            <p>Cheat Mode</p>
+            <input type={"checkbox"} checked={checked} onChange={() => setChecked(!checked)}/>
+          </div>
+          <p>{`Maze Size (5-${maxLimit()})`}</p>
+          <input className="maze_size" type="number" min={5} max={maxLimit()} name="maze-size" value={inputValue} 
             onChange={(e) => setInputValue(parseInt(e.target.value))} 
             onBlur={checkMazeSize}/>
           <button onClick={restartGame}>Restart game</button>
