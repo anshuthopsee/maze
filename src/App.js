@@ -101,12 +101,6 @@ function App() {
     };
   };
 
-  const showBanner = () => {
-    if (isLastCell(currentPos[0], currentPos[1])) {
-      return <div style={{height: isMobile ? 40 : 100, fontSize: isMobile ? 20: 30}} className="banner" onClick={restartGame}>YOU WON! CLICK HERE TO PLAY AGAIN</div>
-    };
-  };
-
   const triggerKeydown = (key) => {
     const event = new KeyboardEvent('keydown', {
       key: key
@@ -119,12 +113,12 @@ function App() {
     if (isMobile) {
       return (
         <div className="controls_container">
-          <div className="arrow up" onMouseDown={() => triggerKeydown("w")}><p>up</p></div>
+          <button className="arrow" onMouseDown={() => triggerKeydown("w")}><p className="up">↑</p></button>
           <div className="left-right">
-            <div className="arrow left" onMouseDown={() => triggerKeydown("a")}><p>left</p></div>
-            <div className="arrow right" onMouseDown={() => triggerKeydown("d")}><p>right</p></div>
+            <button className="arrow" onMouseDown={() => triggerKeydown("a")}><p className="left">↑</p></button>
+            <button className="arrow" onMouseDown={() => triggerKeydown("s")}><p className="down">↑</p></button>
+            <button className="arrow" onMouseDown={() => triggerKeydown("d")}><p className="right">↑</p></button>
           </div>
-          <div className="arrow down" onMouseDown={() => triggerKeydown("s")}><p>down</p></div>
         </div>
       );
     };
@@ -184,7 +178,6 @@ function App() {
         </table>
         {showControls()}
       </div>
-      {showBanner()}
     </>
   );
 };
