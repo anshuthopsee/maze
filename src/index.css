@@ -165,23 +165,31 @@ table {
 }
 
 .up {
+  height: 100%;
+  width: 100%;
   position: absolute;
   top: 6px;
 }
 
 .left {
+  height: 100%;
+  width: 100%;
   position: absolute;
   transform: rotate(-90deg);
 }
 
 .right {
+  height: 100%;
+  width: 100%;
   position: absolute;
   transform: rotate(90deg);
 }
 
 .down {
+  height: 100%;
+  width: 100%;
   position: absolute;
-  top: 12px;
+  top: -6px;
   transform: rotate(180deg);
 }
 
