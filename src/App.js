@@ -11,13 +11,13 @@ function App() {
   const [clickCount, setClickCount] = useState(0);
   const [checked, setChecked] = useState(false);
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  var maze;
+  const maze = useRef();
 
   const generateClassName = (walls, r, c) => {
     let className = ["", ""];
     let cell = gridRef.current[r][c];
 
-    Object.keys(walls).map((wall) => {
+    Object.keys(walls).forEach((wall) => {
       if (walls[wall]) className[0]+=(` border-${wall}`);
     });
 
@@ -49,7 +49,7 @@ function App() {
   };
 
   const helper = (direction) => {
-    let nextPos = maze.movePlayerPos([...currentPosRef.current], direction);
+    let nextPos = maze.current.movePlayerPos([...currentPosRef.current], direction);
     let currentCell = gridRef.current[currentPosRef.current[0]][currentPosRef.current[1]];
     let nextCell = gridRef.current[nextPos[0]][nextPos[1]];
     let [currentPosRow, currentPosCol] = currentPosRef.current;
@@ -71,28 +71,28 @@ function App() {
 
   const controls = (e) => {
     if (!isLastCell(currentPosRef.current[0], currentPosRef.current[1])) {
-      if (e.key === "ArrowLeft" || e.key === "a") {
+      if (e.key === "ArrowLeft" || e.key === "a" || e.target.className === "left") {
         e.preventDefault();
         let nextPos = helper("left");
         currentPosRef.current = [...nextPos];
         setCurrentPos(() => [...nextPos]);
       };
 
-      if (e.key === "ArrowRight" || e.key === "d") {
+      if (e.key === "ArrowRight" || e.key === "d" || e.target.className === "right") {
         e.preventDefault();
         let nextPos  = helper("right");
         currentPosRef.current = [...nextPos];
         setCurrentPos(() => [...nextPos]);
       };
 
-      if (e.key === "ArrowUp" || e.key === "w") {
+      if (e.key === "ArrowUp" || e.key === "w" || e.target.className === "up") {
         e.preventDefault();
         let nextPos = helper("top");
         currentPosRef.current = [...nextPos];
         setCurrentPos(() => [...nextPos]);
       };
 
-      if (e.key === "ArrowDown" || e.key === "s") {
+      if (e.key === "ArrowDown" || e.key === "s" || e.target.className === "down") {
         e.preventDefault();
         let nextPos = helper("bottom");
         currentPosRef.current = [...nextPos];
@@ -101,23 +101,15 @@ function App() {
     };
   };
 
-  const triggerKeydown = (key) => {
-    const event = new KeyboardEvent('keydown', {
-      key: key
-    });
-
-    document.dispatchEvent(event);
-  };
-
   const showControls = () => {
     if (isMobile) {
       return (
         <div className="controls_container">
-          <button className="arrow" onMouseDown={() => triggerKeydown("w")}><p className="up">↑</p></button>
+          <button className="arrow" onClick={controls}><p className="up">↑</p></button>
           <div className="left-right">
-            <button className="arrow" onMouseDown={() => triggerKeydown("a")}><p className="left">↑</p></button>
-            <button className="arrow" onMouseDown={() => triggerKeydown("s")}><p className="down">↑</p></button>
-            <button className="arrow" onMouseDown={() => triggerKeydown("d")}><p className="right">↑</p></button>
+            <button className="arrow" onClick={controls}><p className="left">↑</p></button>
+            <button className="arrow" onClick={controls}><p className="down">↑</p></button>
+            <button className="arrow" onClick={controls}><p className="right">↑</p></button>
           </div>
         </div>
       );
@@ -146,9 +138,9 @@ function App() {
   };
 
   useEffect(() => {
-    maze = new Maze(gridSize);
-    maze.setup();
-    let grid = maze.draw();
+    maze.current = new Maze(gridSize);
+    maze.current.setup();
+    let grid = maze.current.draw();
     gridRef.current = grid;
     setGrid(grid);
 
