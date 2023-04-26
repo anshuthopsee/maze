@@ -14,4 +14,4 @@ Project reference
 - https://github.com/tomliangg/maze-game
 
 ## Site link
-### https://anshuthopsee.github.io/maze-game
+### https://anshuthopsee.github.io/maze-game/
